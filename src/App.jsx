@@ -1352,4 +1352,61 @@ function App() {
   );
 }
 
+// Fix the loadHistory function
+const loadHistory = async () => {
+  try {
+    console.log('📡 Loading history from:', `${API_BASE_URL}/history?user_id=anonymous`);
+    
+    const response = await fetch(`${API_BASE_URL}/history?user_id=anonymous`);
+    
+    if (!response.ok) {
+      console.error('❌ History API error:', response.status, response.statusText);
+      setHistory([]); // Set empty array instead of throwing
+      return;
+    }
+    
+    const data = await response.json();
+    console.log('📦 History data received:', data);
+    
+    // Always ensure data is an array
+    if (Array.isArray(data)) {
+      setHistory(data);
+    } else {
+      console.warn('⚠️ History data is not an array, setting empty array');
+      setHistory([]);
+    }
+  } catch (error) {
+    console.error('❌ Error loading history:', error);
+    setHistory([]); // Important: Set to empty array
+  }
+};
+
+// Do the same for loadCollections
+const loadCollections = async () => {
+  try {
+    console.log('📡 Loading collections from:', `${API_BASE_URL}/collections?user_id=anonymous`);
+    
+    const response = await fetch(`${API_BASE_URL}/collections?user_id=anonymous`);
+    
+    if (!response.ok) {
+      console.error('❌ Collections API error:', response.status, response.statusText);
+      setCollections([]);
+      return;
+    }
+    
+    const data = await response.json();
+    console.log('📦 Collections data received:', data);
+    
+    if (Array.isArray(data)) {
+      setCollections(data);
+    } else {
+      console.warn('⚠️ Collections data is not an array, setting empty array');
+      setCollections([]);
+    }
+  } catch (error) {
+    console.error('❌ Error loading collections:', error);
+    setCollections([]);
+  }
+};
+
 export default App;
