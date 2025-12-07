@@ -9,7 +9,7 @@ import {
   HardDrive, Layers, Grid, Hash, Bell, BellOff
 } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Enhanced JSON Viewer Component
 const EnhancedJSONViewer = ({ data, depth = 0, onCopy }) => {
