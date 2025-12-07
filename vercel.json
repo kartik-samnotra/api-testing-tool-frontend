@@ -9,8 +9,5 @@
       "source": "/api/(.*)",
       "destination": "https://api-testing-tool-backend-vqer.onrender.com/api/$1"
     }
-  ],
-  "env": {
-    "VITE_API_URL": "https://api-testing-tool-backend-vqer.onrender.com"
-  }
+  ]
 }
